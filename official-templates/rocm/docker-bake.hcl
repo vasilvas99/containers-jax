@@ -4,6 +4,8 @@ group "default" {
     "rocm644-ubuntu2204-pytorch260",
     "rocm644-ubuntu2404-pytorch260",
     "rocm644-ubuntu2404-pytorch271",
+    "rocm720-ubuntu2404-jax080"
+    "rocm720-ubuntu2204-jax080"
   ]
 }
 
@@ -58,5 +60,25 @@ target "rocm644-ubuntu2404-pytorch271" {
   ]
   args = {
     BASE_IMAGE = "rocm/pytorch:rocm6.4.4_ubuntu24.04_py3.12_pytorch_release_2.7.1"
+  }
+}
+
+target "rocm720-ubuntu2404-jax080" {
+  inherits = ["rocm-base"]
+  tags = [
+    "runpod/base:${RELEASE_VERSION}${RELEASE_SUFFIX}-rocm720-ubuntu2404-jax080",
+  ]
+  args = {
+    BASE_IMAGE = "rocm/jax:rocm7.2-jax0.8.0-py3.12"
+  }
+}
+
+target "rocm720-ubuntu2204-jax080" {
+  inherits = ["rocm-base"]
+  tags = [
+    "runpod/base:${RELEASE_VERSION}${RELEASE_SUFFIX}-rocm720-ubuntu2204-jax080",
+  ]
+  args = {
+    BASE_IMAGE = "rocm/jax:rocm7.2-jax0.8.0-py3.11"
   }
 }
